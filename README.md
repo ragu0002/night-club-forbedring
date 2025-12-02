@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Regler for navngivning
 
-## Getting Started
+### Component Structure & Naming Conventions
 
-First, run the development server:
+We use an atomic design–inspired structure with three component categories.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### Organisms (`o-`)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Organisms are complex components composed of multiple smaller components.  
+All organism components must be placed in a folder starting with `o-`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### Molecules (`m-`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Molecules are simpler components that may consist of multiple elements or smaller components.  
+All molecule components must be placed in a folder starting with `m-`.
 
-## Learn More
+#### Atoms (`a-`)
 
-To learn more about Next.js, take a look at the following resources:
+Atoms are basic components built from a single element, such as a button or typography.  
+All atom components must be placed in a folder starting with `a-`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Naming Conventions
 
-## Deploy on Vercel
+#### PascalCase
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Used for component names.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### camelCase
+
+Used for variables and functions.
+
+#### kebab-case
+
+Used for CSS class names.
+
+#### Folder Naming
+
+Folders always start with a lowercase letter.
+
+##### Example structure:
+
+home/
+o-componentName/
+m-componentName/
+a-componentName/
+
+---
+
+## Styling Guidelines
+
+#### Global CSS
+
+We maintain a global CSS file with global rules.
+
+#### Component-Specific CSS
+
+For custom or specific styles, create a CSS file (e.g. `Button.css`) and import it directly inside the component.
+
+#### Typography
+
+Typography is managed through a dedicated component that defines text styles and passes them as props.
+
+#### Colors
+
+Colors are defined in `@themes` inline inside our global CSS.
+
+#### Vanilla CSS
+
+For custom properties or more complex visual styles and functionalities, styles can be defined inside:
+
+(globals.css)
+
+`@layer components  {
+  /* component-specific styles */
+}`
+
+#### Tailwind
+
+Tailwind is used for:
+
+- sizing
+
+- colors
+
+- responsiveness
+
+- general utilities
+
+## Branching
+
+Branch names are defined by Linear.
+
+#### Main Branch Rules
+
+- Never write code directly in main.
+
+- There must never be errors when merging into main.
+
+#### Commit Messages
+
+Commit messages must follow this format:
+
+name-description-more-description
