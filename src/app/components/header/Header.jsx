@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Logo from "../../assets/icon/Logo_main.svg";
 import ActiveLink from "./ActiveLink";
 import Link from "next/link";
 import { useState } from "react";
@@ -30,12 +31,12 @@ export default function Header() {
     </>
   );
   return (
-    <header className={` w-screen grid grid-cols-(--project-grid-cols) project-grid`}>
+    <header className={` w-screen grid grid-cols-(--project-grid-cols) project-grid sticky top-0`}>
       <nav className="grid grid-cols-subgrid">
         <div className=" h-25 flex items-center justify-between w-full">
           <Link href="/">
             <Image
-              src="/assets/Logo.png"
+              src={Logo}
               width={200}
               height={200}
               alt="logo"

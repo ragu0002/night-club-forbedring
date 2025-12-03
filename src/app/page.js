@@ -4,7 +4,6 @@ import { HeadingXL, HeadingMain, HeadingSecondary, Subheading, Caption } from ".
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="grid col-(--full-col) grid-cols-subgrid"></main>
       <Footer />
     </>
