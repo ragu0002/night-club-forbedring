@@ -5,7 +5,8 @@ import BlogFull1 from "../../../assets/content-img/blog_full1.jpg";
 import BlogFull2 from "../../../assets/content-img/blog_full2.jpg";
 import BlogFull3 from "../../../assets/content-img/blog_full3.jpg";
 import Link from "next/link";
-import { Caption, HeadingSecondary } from "@/app/components/typography";
+import { Caption, HeadingSecondary, HeadingXL, Subheading } from "@/app/components/typography";
+import CommentForm from "@/app/components/blogpage/CommentForm";
 
 export default function BlogPost({ params }) {
   return (
@@ -39,6 +40,30 @@ const FetchProduct = async ({ params }) => {
           <Caption text={post.content} />
         </div>
       </div>
+      <div className="col-(--content-col)">
+        <FetchComment id={post.id} />
+        <CommentForm />
+      </div>
     </main>
+  );
+};
+
+const FetchComment = async ({ id }) => {
+  "use server";
+  const response = await fetch(`http://localhost:4000/blogposts/${id}?embed=comments`);
+  const post = await response.json();
+  return (
+    <div className={`col-(--content-col)  gap-5 my-10 ${post.comments.length === 0 ? `hidden` : `grid`}`}>
+      <HeadingXL text={post.comments.length === 1 ? `${post.comments.length} comment` : `${post.comments.length} comments`} />
+      {post.comments.map((comment) => (
+        <div className="grid gap-5">
+          <div className="flex gap-3 items-baseline">
+            <Subheading text={`${comment.name} - `} />
+            <Caption text={`Posted ${comment.date}`} color="pink" />
+          </div>
+          <Caption text={comment.content} />
+        </div>
+      ))}
+    </div>
   );
 };
