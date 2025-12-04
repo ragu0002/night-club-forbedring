@@ -22,16 +22,18 @@
 }
 
 .gradient-underline-lg {
+  --line-width: clamp(8rem, 20vw, 13rem);
   position: relative;
-  padding-bottom: 1px;
+  padding-bottom: 8px;
+  width: 100%;
 
   &::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: calc(50vw - var(--line-width) / 2);
     bottom: 0;
     height: 2px;
-    width: 100%;
+    width: var(--line-width);
     background-image: linear-gradient(to right, transparent, var(--color-accent), transparent);
   }
 }
