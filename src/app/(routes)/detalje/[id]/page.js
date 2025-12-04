@@ -32,11 +32,14 @@ const FetchProduct = async ({ params }) => {
   return (
     <main className="grid col-(--full-col) grid-cols-subgrid">
       <HeroSection text="blog post" />
-      <div className="col-(--full-col) grid grid-cols-subgrid md:mt-15 gap-10">
-        <Image src={imageSrc} alt={post.title} width={300} height={200} className=" md:col-(--content-col) col-(--full-col) self-stretch w-full object-cover basis-0 grow" />
-        <div className=" col-(--content-col) grid gap-3">
-          <HeadingSecondary text={post.title} />
-          <Caption text={`By: ${post.author} / 3 Comments / 16. November 2016`} color="pink" />
+      <div className="col-(--full-col) grid grid-cols-subgrid md:mt-15">
+        <Image src={imageSrc} alt={post.title} width={300} height={200} className=" md:col-(--content-col) col-(--full-col) self-stretch w-full object-cover mb-8" />
+        <div className=" col-(--content-col) grid gap-8">
+          <div className="grid gap-3">
+            <HeadingSecondary text={post.title} />
+            <Caption text={`By: ${post.author} / 3 Comments / 16. November 2016`} color="pink" />
+          </div>
+
           <Caption text={post.content} />
         </div>
       </div>
@@ -55,15 +58,22 @@ const FetchComment = async ({ id }) => {
   return (
     <div className={`col-(--content-col)  gap-5 my-10 ${post.comments.length === 0 ? `hidden` : `grid`}`}>
       <HeadingXL text={post.comments.length === 1 ? `${post.comments.length} comment` : `${post.comments.length} comments`} />
-      {post.comments.map((comment) => (
-        <div className="grid gap-5">
-          <div className="flex gap-3 items-baseline">
-            <Subheading text={`${comment.name} - `} />
-            <Caption text={`Posted ${comment.date}`} color="pink" />
+      {post.comments.map((comment) => {
+        const getDate = comment.date.split("T")[0];
+        const [year, month, day] = getDate.split("-");
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const formattedDate = `${day}. ${months[month - 1]} ${year}`;
+        return (
+          <div className="grid gap-5">
+            <div className="flex gap-3 items-baseline">
+              <Subheading text={`${comment.name} - `} />
+              <Caption text={`Posted ${formattedDate}`} color="pink" />
+            </div>
+            <Caption text={comment.content} />
           </div>
-          <Caption text={comment.content} />
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
