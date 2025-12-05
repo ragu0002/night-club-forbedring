@@ -12,7 +12,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const links = (
     <>
-      <ul className={`flex flex-col md:flex-row *:mx-4 font-medium uppercase *:tracking-[2%] *:text-nowrap  items-center text-center  md:text-start *:py-3`}>
+      <ul
+        className={`flex flex-col md:flex-row *:mx-4 font-medium uppercase *:tracking-[2%] *:text-nowrap  items-center text-center  md:text-start *:py-3`}>
         <li>
           <ActiveLink href="/">home</ActiveLink>
         </li>
@@ -32,8 +33,9 @@ export default function Header() {
     </>
   );
   return (
-    <div className="w-screen">
-      <header className={`border-accent border frame bg-background w-screen grid grid-cols-(--project-grid-cols) project-grid sticky top-0`}>
+    <div className="w-screen sticky top-0 z-20">
+      <header
+        className={`border-accent border frame bg-background w-screen grid grid-cols-(--project-grid-cols) project-grid `}>
         <nav className="grid grid-cols-subgrid ">
           <div className=" h-25 flex items-center justify-between w-full">
             <Link href="/">
@@ -64,7 +66,9 @@ export default function Header() {
                   <IoClose size={40} />
                 </button>
               </div>
-              <div className="flex justify-center items-start my-50 h-screen">{links}</div>
+              <div className="flex justify-center items-start my-50 h-screen">
+                {links}
+              </div>
             </div>
           )}
         </nav>
