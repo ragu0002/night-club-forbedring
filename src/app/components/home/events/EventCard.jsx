@@ -9,14 +9,14 @@ export default function eventCard({ imgUrl }) {
         width={500}
         height={500}
         alt="Event image 1"
-        className="w-full md:w-xl z-10"
+        className="w-auto z-10 m"
       />
     </>
   );
 
   const eventLabel = (
     <>
-      <div className="w-auto md:w-xl h-10 bg-accent flex items-center justify-start gap-7 px-6">
+      <div className="w-auto  h-10 bg-accent flex items-center justify-start gap-7 px-6">
         <BannerText
           color="white"
           text="DD./MM."
@@ -34,7 +34,7 @@ export default function eventCard({ imgUrl }) {
   );
 
   return (
-    <div className="h-full ">
+    <div className="h-full w-full *:w-full ">
       {eventImg}
       {eventLabel}
     </div>
