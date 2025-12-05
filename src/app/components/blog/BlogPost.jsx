@@ -35,6 +35,7 @@ const FetchBlogPost = async () => {
   const posts = Array.isArray(data) ? data : data?.posts ?? [];
 
   const directions = ["flex", "flex-row-reverse"];
+  const paddings = ["md:pr-30 pl-5", "md:pl-30 pr-5"];
 
   if (!posts || posts.length === 0) {
     return <div>No posts available</div>;
@@ -42,21 +43,24 @@ const FetchBlogPost = async () => {
 
   return posts.map((post, index) => {
     const direction = directions[index % directions.length];
+    const padding = paddings[index % paddings.length];
     const filename = post.asset?.url?.split("/").pop();
     const imageSrc = imageMap[filename] || BlogFull1; // fallback to BlogFull1 if not found
 
     return (
-      <div href={`/detalje/${post.id}`} key={post.id ?? index} className={`grid md:flex ${direction}`}>
+      <section href={`/detalje/${post.id}`} key={post.id ?? index} className={`grid group md:flex ${direction}`}>
         <Image src={imageSrc} alt={post.title} width={300} height={200} className="self-stretch w-full object-cover basis-0 grow" />
-        <div className="grid basis-0 grow p-10">
-          <HeadingSecondary text={post.title} />
-          <Caption text={`By: ${post.author} / 3 Comments / 16. November 2016`} color="pink" />
-          <Caption text={post.content} wordLimit={70} />
-          <Link href={`/detalje/${post.id}`} key={post.id ?? index}>
-            <MainButton text="read more" styling="col-span-full mt-5 w-1/2 md:w-35 justify-self-center md:justify-self-end" />
-          </Link>
+        <div className=" basis-0 grow">
+          <div className={`grid py-10 ${padding}`}>
+            <HeadingSecondary text={post.title} />
+            <Caption text={`By: ${post.author} / 3 Comments / 16. November 2016`} color="pink" />
+            <Caption text={post.content} wordLimit={70} />
+            <Link href={`/detalje/${post.id}`} key={post.id ?? index} className="justify-self-center w-50 md:justify-self-end ">
+              <MainButton text="read more" styling="col-span-full w-full mt-5 md:w-50 justify-self-center" />
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     );
   });
 };
