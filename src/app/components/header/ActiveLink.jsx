@@ -10,7 +10,11 @@ export default function ActiveLink({ href, children }) {
   return (
     <Link
       href={href}
-      className={isActive ? "gradient-underline-sm   text-(--color-accent)" : ""}>
+      className={
+        isActive
+          ? "gradient-underline-sm   text-(--color-accent)"
+          : "hover:text-(--color-accent) transition-all transition-discrete"
+      }>
       {children}
     </Link>
   );
