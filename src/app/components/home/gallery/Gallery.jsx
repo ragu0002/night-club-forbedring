@@ -2,6 +2,7 @@
 
 import { HeadingMain } from "../../typography";
 import Image from "next/image";
+import PatternBg from "../../bgOverlays/PatternBg";
 
 const images = [
   "/assets/content-img/gallery1_big.jpg",

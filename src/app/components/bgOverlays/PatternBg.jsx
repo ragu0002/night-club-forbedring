@@ -4,10 +4,10 @@ const gradientOverlay = ({ children }) => {
   return (
     <div className="col-(--full-col) grid grid-cols-subgrid relative w-full h-full">
       <Image
-        src="/assets/bg/slider_bg_overlay.png"
-        alt="Gradient background overlay"
+        src="/assets/bg/pattern_bg.jpg"
+        alt="Main pattern background"
         fill
-        className="object-cover opacity-40"
+        className="bg-gray-900 object-cover"
       />
       <div className="relative z-10 col-(--content-col)">{children}</div>
     </div>
