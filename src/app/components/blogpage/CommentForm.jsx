@@ -13,9 +13,9 @@ const formCommentSchema = z.object({
     .string()
     .min(2, "Name must have minimum two letters")
     .regex(/^[\p{L}\s'-]+$/u, "Please enter a valid name"),
-  comment: z.string(),
+  content: z.string(),
   blogpostId: z.number(),
-  date: z.date().transform((d) => d.toISOString()),
+  // date: z.date().transform((d) => d.toISOString()),
 });
 
 const CommentForm = ({ id }) => {
@@ -25,6 +25,9 @@ const CommentForm = ({ id }) => {
     resolver: zodResolver(formCommentSchema),
     defaultValues: {
       blogpostId: id,
+      email: "",
+      name: "",
+      content: "",
     },
   });
 
@@ -32,13 +35,17 @@ const CommentForm = ({ id }) => {
   const { errors, isSubmitting } = formState;
 
   const onSubmit = async (data) => {
+    const submissionData = {
+      ...data,
+      date: new Date().toISOString(), // Backend will set this, but send it just in case
+    };
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Comment has been posted", data);
+    console.log("Comment has been posted", submissionData);
     try {
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(submissionData),
       });
 
       if (!response.ok) {
@@ -46,8 +53,13 @@ const CommentForm = ({ id }) => {
         return;
       }
 
-      console.log("Success! Comment was posted", data);
-      reset(); // Clear the form
+      console.log("Success! Comment was posted", submissionData);
+      reset({
+        blogpostId: id,
+        email: "",
+        name: "",
+        content: "",
+      });
       router.refresh();
     } catch (err) {
       console.error("Error posting comment:", err);
@@ -65,7 +77,7 @@ const CommentForm = ({ id }) => {
           value={"10-11-2025"}
           {...register("blogpostId", { valueAsNumber: true })}
         />
-        
+
         <div className="w-full h-full">
           <p className="text-red-500 text-xs h-6 align-baseline pt-2">
             {errors.name?.message}
@@ -107,7 +119,7 @@ const CommentForm = ({ id }) => {
             className={`border md:p-4 w-full  h-80 p-2 focus:outline-accent placeholder:text-foreground ${
               errors.comment ? "border-red-500" : ""
             }`}
-            {...register("comment")}
+            {...register("content")}
           />
         </div>
         <MainButton
