@@ -35,6 +35,18 @@ export default function Testimonials() {
  const current = testimonials[currentIndex];
  console.log("CURRENT TESTIMONIAL:", current);
 
+ function handlePrev() {
+  setCurrentIndex((prev) =>
+    prev === 0 ? testimonials.length - 1 : prev - 1
+  );
+}
+
+function handleNext() {
+  setCurrentIndex((prev) =>
+    prev === testimonials.length - 1 ? 0 : prev + 1
+  );
+}
+
 
   return (
     <div className="col-(--full-col) grid grid-cols-subgrid h-full">
@@ -53,8 +65,22 @@ export default function Testimonials() {
             image={current.asset?.url}
             name={current.name}
             text={current.content}
+            
+
           />
         )}
+
+ <div>
+            <Slider
+           
+    onPrev={handlePrev}
+    onNext={handleNext}
+    currentIndex={currentIndex}
+    total={testimonials.length}
+
+ />
+          </div>
+      
 
       </PartyBg>
     </div>

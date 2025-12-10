@@ -1,5 +1,5 @@
 import SoMe from "../socials/Socials";
-import Image from "next/image";
+
 import { HeadingSecondary, Caption } from "../typography";
 
 const TestimonialCard = ({image, name, text}) => {
