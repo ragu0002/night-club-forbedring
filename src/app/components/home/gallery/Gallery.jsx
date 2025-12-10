@@ -2,9 +2,11 @@
 
 import { HeadingMain } from "../../typography";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Triangles from "../../hoverFrames/Triangles";
 import axios from "axios";
 import Image from "next/image";
+
 import PatternBg from "../../bgOverlays/PatternBg";
 
 export default function Gallery() {
@@ -27,7 +29,7 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="w-screen h-full col-span-full ">
+      <section className="w-screen h-full col-span-full">
         <div className=" h-50 flex items-center">
           <HeadingMain color="white" text="night club gallery" />
         </div>
@@ -36,13 +38,26 @@ export default function Gallery() {
           {!isLoading &&
             !error &&
             isImage.length > 0 &&
-            isImage.slice(0, 7).map((img) => {
+            isImage.slice(0, 7).map((img, index) => {
               const filename = img.asset.url.split("/").pop();
               return (
                 <Triangles key={img.id}>
-                  <div className="h-65">
-                    <Image key={img.id} src={`/assets/content-img/${filename}`} alt={filename || img.description || `Gallery image ${img.id}`} className="w-full h-full object-cover" width={1200} height={800} />;
-                  </div>
+                  <motion.div
+                    className="h-65"
+                    initial={{ x: -50, y: 0, opacity: 0 }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                      transition: {
+                        type: "tween",
+                        duration: 1,
+                        ease: "easeInOut",
+                      },
+                    }}
+                  >
+                    <Image key={img.id} src={`/assets/content-img/${filename}`} alt={filename || img.description || `Gallery image ${img.id}`} className="w-full h-full object-cover hover:opacity-30" width={1200} height={800} />;
+                  </motion.div>
                 </Triangles>
               );
             })}
