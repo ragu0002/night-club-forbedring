@@ -1,0 +1,143 @@
+// "use client";
+
+// import { motion } from "framer-motion";
+// import { HeroSubheading } from "../../typography";
+// import MusicLoader from "./MusicLoader";
+// import Image from "next/image";
+
+// export default function PageIntro() {
+//   const images = ["/assets/bg/header_bg_1.jpg", "/assets/bg/header_bg_2.jpg"];
+//   const randomImage = images[Math.floor(Math.random() * images.length)];
+
+//   return (
+//     <div className="relative h-screen  inset-0  col-(--full-col)  grid-cols-subgrid grid">
+//       <MusicLoader />
+
+//       <motion.img
+//         className="absolute inset-0  col-(--full-col) object-cover  h-full row-span-full scale-108 object-bottom"
+//         src={randomImage}
+//         alt="Background image"
+//         width={1620}
+//         height={868}
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         transition={{ duration: 3.6, ease: "easeOut" }}
+//       />
+
+//       <motion.div className=" relative inset-0 flex flex-col justify-center items-center  col-(--full-col) ">
+//         <motion.img
+//           src="../../../assets/icon/Logo.svg"
+//           alt="Logo"
+//           initial={{
+//             rotateX: 90,
+//             skewX: -5,
+
+//             opacity: 0,
+//           }}
+//           animate={{
+//             rotateX: 0,
+//             skewX: 0,
+
+//             opacity: 1,
+//           }}
+//           transition={{
+//             duration: 1.2,
+
+//             ease: "easeIn",
+//           }}
+//           style={{
+//             transformOrigin: "top",
+//           }}
+//           className="w-100 md:w-170"
+//         />
+
+//         <motion.div
+//           initial={{ y: -30, opacity: 0 }}
+//           animate={{ y: 0, opacity: 1 }}
+//           transition={{
+//             delay: 1.4,
+//             duration: 0.4,
+//             ease: "easeOut",
+//           }}
+//           className=" flex flex-col w-full items-center justify-center ">
+//           <HeroSubheading
+//             color=" white mt-4 ml-2"
+//             text="have a good time"
+//           />
+//           <motion.img
+//             src="../../../assets/bottom_line2.png"
+//             alt="Pink neon glow bottom line"
+//             width={300}
+//             height={24}
+//           />
+//         </motion.div>
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+"use client";
+
+import { motion } from "framer-motion";
+import { HeroSubheading } from "../../typography";
+import MusicLoader from "./MusicLoader";
+
+export default function PageIntro() {
+  const images = ["/assets/bg/header_bg_1.jpg", "/assets/bg/header_bg_2.jpg"];
+  const randomImage = images[Math.floor(Math.random() * images.length)];
+
+  return (
+    <div className="w-screen relative h-screen col-(--full-col) grid-cols-subgrid grid overflow-hidden">
+      <MusicLoader />
+
+      <motion.img
+        src={randomImage}
+        alt="Background image"
+        className="bg-black absolute inset-0 col-(--full-col) object-cover row-span-full  scale-128 object-top bg-top h-screen "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 5, ease: "anticipate", type: "tween" }}
+      />
+
+      <div className="relative inset-0 flex flex-col justify-center items-center col-(--full-col)">
+        <motion.div style={{ perspective: 800 }}>
+          <motion.img
+            src="/assets/icon/Logo.svg"
+            alt="Logo"
+            className=" ~w-100/170"
+            initial={{ rotateX: 90, opacity: 0 }}
+            animate={{ rotateX: 0, opacity: 1 }}
+            transition={{
+              duration: 1,
+              ease: "easeIn",
+              type: "tween",
+              delay: 1,
+            }}
+            style={{
+              transformOrigin: "top",
+              transformStyle: "preserve-3d",
+              display: "inline-block",
+            }}
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ y: -30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 2, duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col w-full items-center justify-center mt-6">
+          <HeroSubheading
+            color="white mt-4 ml-2"
+            text="have a good time"
+          />
+          <motion.img
+            src="/assets/bottom_line2.png"
+            alt="Pink neon glow bottom line"
+            width={300}
+            height={24}
+          />
+        </motion.div>
+      </div>
+    </div>
+  );
+}
