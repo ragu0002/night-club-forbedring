@@ -1,3 +1,5 @@
+"use client";
+
 import { HeadingMain } from "../../typography";
 import RescentBlogPost from "./RecentBlogPost";
 
