@@ -78,7 +78,7 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
               }}
             />
             <div className="border-4 rounded-full p-2 w-15 h-15 grid justify-center items-center cursor-pointer hover:border-accent hover:text-accent" onClick={togglePlay}>
-              {isPlaying ? <FaPause size={30} color={accent} /> : <FaPlay size={30} />}
+              {isPlaying ? <FaPause size={30} color="accent" /> : <FaPlay size={30} />}
             </div>
             <TiMediaFastForward
               className="block leading-none cursor-pointer hover:text-accent"
