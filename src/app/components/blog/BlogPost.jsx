@@ -90,7 +90,11 @@ const FetchBlogPost = () => {
           <div className={`grid py-10 ${padding}`}>
             <HeadingSecondary text={post.title} />
             <Caption
-              text={`By: ${post.author} / ${post.comments.length} comments / 16. November 2016`}
+              text={`By: ${post.author} / ${
+                post.comments.length > 1
+                  ? post.comments.length + " comments"
+                  : "1 comment"
+              } / 16. November 2016`}
               color="pink"
             />
             <Caption
