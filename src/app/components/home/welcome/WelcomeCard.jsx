@@ -8,7 +8,7 @@ export default function WelcomeCard({
   description,
   icon,
 }) {
-  const welcome = { title, description, icon };
+
 
   return (
     <div className="relative w-full">
@@ -20,7 +20,7 @@ export default function WelcomeCard({
         className="w-full object-cover"
       />
 
-      <WelcomeOverlay welcome={welcome} />
+      <WelcomeOverlay icon={icon} description={description} title={title} />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Caption, HeadingSecondary } from "../../typography";
 
-export default function WelcomeOverlay({ welcome }) {
+export default function WelcomeOverlay({  icon, description, title }) {
   const overlayVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -25,15 +25,15 @@ export default function WelcomeOverlay({ welcome }) {
 
         {/* Icon box */}
         <div className="border border-pink-500 w-20 h-20 flex items-center justify-center mb-6">
-          <span className="text-pink-500 text-3xl">{welcome.icon}</span>
+          <span className="text-pink-500 text-3xl">{icon}</span>
         </div>
 
         {/* Title */}
-        <HeadingSecondary text={welcome.title} />
+        <HeadingSecondary text={title} />
 
         {/* Text */}
         <div className="mt-4 max-w-[36ch]">
-          <Caption text={welcome.description} />
+          <Caption text={description} />
         </div>
       </div>
     </motion.div>

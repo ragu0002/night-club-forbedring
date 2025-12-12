@@ -3,6 +3,7 @@ import WelcomeCard from "./WelcomeCard";
 import PatternBg from "../../bgOverlays/PatternBg";
 import { GiGlassCelebration } from "react-icons/gi";
 import { BiDish } from "react-icons/bi";
+import { MdMan4 } from "react-icons/md";
 
 export default function Welcome() {
   return (
@@ -22,8 +23,9 @@ export default function Welcome() {
               altText="Table with food and drinks in nightclub"
               title="NIGHT CLUB"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam."
-              icon=""
+              icon={<MdMan4 />}
             />
+       
             <WelcomeCard
               imgUrl="reastaurant_1.jpg"
               altText="Serving food in restaurant area"
