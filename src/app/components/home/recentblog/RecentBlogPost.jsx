@@ -22,7 +22,9 @@ const FetchRecentBlogPost = () => {
   useEffect(() => {
     async function loadRecentBlog() {
       try {
-        const response = await axios.get("http://localhost:4000/blogposts");
+        const response = await axios.get(
+          "http://localhost:4000/blogposts/?embed=comments"
+        );
         setIsPost(response.data || []);
       } catch (err) {
         setError(err);
@@ -34,20 +36,55 @@ const FetchRecentBlogPost = () => {
   }, []);
 
   if (isLoading) return <ErrorMessages message="Loading..." />;
-  if (error) return <ErrorMessages message="There´s been an error loading, try again later!" error="border bg-accent/50" />;
-  if (isPost.length === 0) return <ErrorMessages message="No posts found" error="border bg-accent/50" />;
+  if (error)
+    return (
+      <ErrorMessages
+        message="There´s been an error loading, try again later!"
+        error="border bg-accent/50"
+      />
+    );
+  if (isPost.length === 0)
+    return (
+      <ErrorMessages
+        message="No posts found"
+        error="border bg-accent/50"
+      />
+    );
   return (
     <>
       {isPost.map((post, index) => {
         const filename = post.asset?.url?.split("/").pop();
 
         return (
-          <Link href={`/detalje/${post.id}`} key={post.id ?? index} className="grid gap-3 cursor-pointer">
-            <Image src={`/assets/content-img/${filename}`} alt={post.title} width={200} height={200} className="self-stretch w-full object-cover" />
+          <Link
+            href={`/detalje/${post.id}`}
+            key={post.id ?? index}
+            className="grid gap-3 cursor-pointer">
+            <Image
+              src={`/assets/content-img/${filename}`}
+              alt={post.title}
+              width={200}
+              height={200}
+              className="self-stretch w-full object-cover"
+            />
             <div className="grid gap-2 pr-15">
-              <HeadingSecondary text={post.title} wordLimit={4} />
-              <Caption text={`By: ${post.author}`} color="pink" />
-              <Caption text={post.content} wordLimit={15} color="mt-4" />
+              <HeadingSecondary
+                text={post.title}
+                wordLimit={4}
+              />
+              <Caption
+                text={`By: ${post.author}  / ${
+                  post.comments.length > 1
+                    ? post.comments.length + " comments "
+                    : "1 comment "
+                } / 16 Nov 2016`}
+                color="pink whitespace-pre whitespace-post"
+              />
+              <Caption
+                text={post.content}
+                wordLimit={15}
+                color="mt-4"
+              />
             </div>
           </Link>
         );
