@@ -10,12 +10,12 @@ const NightClubTrack = () => {
   const [isImage, setImage] = useState("track_thumb.jpg");
   const [isTitle, setTitle] = useState("Default title");
   return (
-    <section className="col-(--content-col)">
-      <div className=" h-50 flex items-center">
+    <section className="grid grid-cols-subgrid col-(--full-col)">
+      <div className=" h-50 col-(--content-col) flex items-center">
         <HeadingMain color="white" text="night club track" />
       </div>
       <MediaPlayer isSong={isSong} isImage={isImage} isTitle={isTitle} />
-      <AlbumLibrary setSong={setSong} setImage={setImage} setTitle={setTitle} />
+      <AlbumLibrary setSong={setSong} isImage={isImage} setImage={setImage} setTitle={setTitle} />
     </section>
   );
 };
