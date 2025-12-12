@@ -39,8 +39,8 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
     song.onloadedmetadata = () => setDuration(song.duration);
   }, [isSong]);
   return (
-    <section className="flex gap-5">
-      <Image src={`/assets/content-img/${isImage}`} alt="thumbnail image" width={400} height={400} />
+    <section className="flex gap-5 mb-10 md:mb-0 col-(--content-col)">
+      <Image src={`/assets/content-img/${isImage}`} alt="thumbnail image" width={400} height={400} className="hidden md:block" />
       <audio
         ref={songRef}
         src={`/assets/media/${isSong}`}
@@ -50,7 +50,7 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
           setTimestamp((song.currentTime / song.duration) * 100);
         }}
       />
-      <div className="grid w-full">
+      <div className="grid w-full gap-5 md:gap-0 text-center md:text-start">
         <HeadingSecondary text={isTitle} />
         <Slider
           value={[isTimestamp]}
@@ -63,11 +63,11 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
             setTimestamp(v[0]);
           }}
         />
-        <div className="flex justify-between items-center">
+        <div className="grid md:flex md:justify-between gap-5 md:gap-0 items-center w-full ">
           <div>
             <Caption text={`${formatTime(songRef.current?.currentTime || 0)} / ${formatTime(songRef.current?.duration || 0)}`} />
           </div>
-          <div className="flex justify-center items-center gap-3">
+          <div className="flex justify-center items-center gap-5 md:gap-3 ">
             <TiMediaRewind
               size={30}
               className="block leading-none cursor-pointer hover:text-accent"
@@ -97,7 +97,7 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
               value={[isVolume * 100]}
               max={100}
               step={1}
-              className="w-40 cursor-pointer"
+              className="md:w-40 w-80 cursor-pointer"
               onValueChange={(v) => {
                 const volume = v[0] / 100;
                 setVolume(volume);
