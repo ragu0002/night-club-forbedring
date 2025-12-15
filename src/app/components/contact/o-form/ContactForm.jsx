@@ -5,6 +5,8 @@ import MainButton from "../../buttons/MainButton";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import PatternBg from "../../bgOverlays/PatternBg";
+
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -68,7 +70,9 @@ const ContactForm = () => {
   };
 
   return (
+   <PatternBg>
     <div className="col-(--content-col) my-10">
+    
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-2 mx-5 py-4 gap-1 lg:px-80 md:px-40"
@@ -143,7 +147,9 @@ const ContactForm = () => {
           styling="col-span-full w-1/2 md:w-35 justify-self-end"
         />
       </form>
+      
     </div>
+    </PatternBg>
   );
 };
 
