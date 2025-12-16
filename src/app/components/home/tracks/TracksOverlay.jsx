@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Caption, HeadingSecondary, Subheading } from "../../typography";
+import { Subheading } from "../../typography";
 import { FaPlay } from "react-icons/fa";
 const TracksOverlay = ({ title, image, song, setImage, setSong, setTitle }) => {
   const overlayVariants = {

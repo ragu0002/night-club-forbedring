@@ -9,13 +9,12 @@ import { LuShuffle } from "react-icons/lu";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { FaPause } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 const MediaPlayer = ({ isSong, isImage, isTitle }) => {
   const songRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isTimestamp, setTimestamp] = useState(0);
-  const [isDuration, setDuration] = useState(0);
   const [isVolume, setVolume] = useState(1);
   const togglePlay = () => {
     const song = songRef.current;
@@ -30,18 +29,12 @@ const MediaPlayer = ({ isSong, isImage, isTitle }) => {
     const seconds = Math.floor(sec % 60);
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
-  useEffect(() => {
-    const song = songRef.current;
-    if (!song) return;
-    setTimestamp(0);
-    setIsPlaying(false);
-    song.currentTime = 0;
-    song.onloadedmetadata = () => setDuration(song.duration);
-  }, [isSong]);
+
   return (
     <section className="flex gap-5 mb-10 md:mb-0 col-(--content-col)">
       <Image src={`/assets/content-img/${isImage}`} alt="thumbnail image" width={400} height={400} className="hidden md:block" />
       <audio
+        key={isSong}
         ref={songRef}
         src={`/assets/media/${isSong}`}
         onTimeUpdate={() => {
