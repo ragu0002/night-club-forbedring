@@ -8,9 +8,9 @@ import MainButton from "../buttons/MainButton";
 import { HeadingXL } from "../typography";
 
 // shadcn components
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
+import { Calendar } from "@/app/components/shadcncomponents/ui/calendar";
+import { Popover, PopoverTrigger, PopoverContent } from "@/app/components/shadcncomponents/ui/popover";
+import { Button } from "@/app/components/shadcncomponents/ui/button";
 
 const dateFormat = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",

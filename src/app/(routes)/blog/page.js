@@ -1,6 +1,6 @@
 import Header from "@/app/components/header/Header";
 import BlogList from "@/app/components/blog/BlogList";
-import HeroSection from "@/app/components/HeroSection/HeroSection";
+import HeroSection from "@/app/components/herosection/HeroSection";
 
 export default function Blog() {
   return (

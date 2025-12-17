@@ -1,6 +1,6 @@
 import { HeadingMain } from "../../typography";
 import RescentBlogPost from "./RecentBlogPost";
-import PatternBg from "../../bgOverlays/PatternBg";
+import PatternBg from "../../bgoverlays/PatternBg";
 
 const RecentBlog = () => {
   return (

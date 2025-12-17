@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Triangles from "../../hoverFrames/Triangles";
+import Triangles from "../../hoverframes/Triangles";
 import TracksOverlay from "./TracksOverlay";
 const AlbumLibrary = ({ isImage, setImage, setSong, setTitle }) => {
   return (

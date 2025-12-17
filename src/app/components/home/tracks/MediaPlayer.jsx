@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Caption, HeadingSecondary } from "../../typography";
-import { Slider } from "@/components/ui/slider";
+import { Slider } from "@/app/components/shadcncomponents/ui/slider";
 import { TiMediaRewind } from "react-icons/ti";
 import { TiMediaFastForward } from "react-icons/ti";
 import { LuShuffle } from "react-icons/lu";

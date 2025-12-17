@@ -1,6 +1,6 @@
 import { HeadingMain } from "../../typography";
 import VideoCard from "./VideoCard";
-import PatternBg from "../../bgOverlays/PatternBg";
+import PatternBg from "../../bgoverlays/PatternBg";
 
 export default function LatestVideo() {
   return (

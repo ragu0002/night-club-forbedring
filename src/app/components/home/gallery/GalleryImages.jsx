@@ -2,11 +2,11 @@
 
 import { HeadingMain } from "../../typography";
 import { motion } from "framer-motion";
-import Triangles from "../../hoverFrames/Triangles";
+import Triangles from "../../hoverframes/Triangles";
 import Image from "next/image";
 import { useState } from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/app/components/shadcncomponents/ui/carousel";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/app/components/shadcncomponents/ui/dialog";
 
 const GalleryImages = ({ isImage }) => {
   const [isActive, setActive] = useState(0);

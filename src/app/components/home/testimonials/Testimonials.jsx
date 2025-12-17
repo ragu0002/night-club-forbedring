@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PartyBg from "../../bgOverlays/PartyBg";
+import PartyBg from "../../bgoverlays/PartyBg";
 import Slider from "../../slider/Slider";
 import TestimonialCard from "./TestimonialCard";
 

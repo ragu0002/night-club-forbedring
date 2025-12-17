@@ -1,5 +1,5 @@
 import Header from "@/app/components/header/Header";
-import HeroSection from "@/app/components/HeroSection/HeroSection";
+import HeroSection from "@/app/components/herosection/HeroSection";
 import BookTableOverview from "@/app/components/book/BookTableOverview";
 import ErrorMessages from "@/app/components/errormessages/ErrorMessages";
 
