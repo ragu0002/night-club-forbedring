@@ -77,7 +77,7 @@ const BookForm = ({ selectedTable, setSelectedDate }) => {
       }
 
       console.log("Success! Form has been submitted", data);
-      setSubmitStatus({ type: "success", message: "Reservation submitted successfully!" });
+      setSubmitStatus({ type: "success", message: "Thank you for reserving a table, check your email for a confirmation!" });
       reset();
       router.refresh();
       setTimeout(() => setSubmitStatus(null), 5000);
@@ -104,32 +104,6 @@ const BookForm = ({ selectedTable, setSelectedDate }) => {
         </div>
 
         <div className="w-full h-full">
-          <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.table?.message}</p>
-          <input
-            type="text"
-            readOnly
-            value={selectedTable ?? ""}
-            onClick={() => {
-              if (!selectedTable) {
-                setError("table", {
-                  type: "manual",
-                  message: "Please select a table by clicking on an available table.",
-                });
-              }
-            }}
-            className={`w-full cursor-default h-full border md:p-4 p-2 focus:outline-accent placeholder:text-foreground ${errors.table ? "border-red-500" : ""}`}
-            id="table"
-            placeholder="Table Number"
-            {...register("table")}
-          />
-        </div>
-
-        <div className="w-full h-full">
-          <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.guests?.message}</p>
-          <input type="text" className={`w-full h-full border md:p-4 p-2 focus:outline-accent placeholder:text-foreground ${errors.guests ? "border-red-500" : ""}`} id="guests" placeholder="Number of Guests" {...register("guests", { valueAsNumber: true })} />
-        </div>
-
-        <div className="w-full h-full">
           <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.date?.message}</p>
 
           <Popover>
@@ -152,12 +126,36 @@ const BookForm = ({ selectedTable, setSelectedDate }) => {
             </PopoverContent>
           </Popover>
         </div>
+        <div className="w-full h-full">
+          <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.guests?.message}</p>
+          <input type="text" className={`w-full h-full border md:p-4 p-2 focus:outline-accent placeholder:text-foreground ${errors.guests ? "border-red-500" : ""}`} id="guests" placeholder="Number of Guests" {...register("guests", { valueAsNumber: true })} />
+        </div>
+
+        <div className="w-full h-full">
+          <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.table?.message}</p>
+          <input
+            type="text"
+            readOnly
+            value={selectedTable ?? ""}
+            onClick={() => {
+              if (!selectedTable) {
+                setError("table", {
+                  type: "manual",
+                  message: "Please select a table by clicking on an available table.",
+                });
+              }
+            }}
+            className={`w-full cursor-default h-full border md:p-4 p-2 focus:outline-accent placeholder:text-foreground ${errors.table ? "border-red-500" : ""}`}
+            id="table"
+            placeholder="Table Number"
+            {...register("table")}
+          />
+        </div>
 
         <div className="w-full h-full">
           <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.phone?.message}</p>
           <input type="text" className={`w-full h-full border md:p-4 p-2 focus:outline-accent placeholder:text-foreground ${errors.phone ? "border-red-500" : ""}`} id="phone" placeholder="Your Contact Number" {...register("phone", { valueAsNumber: true })} />
         </div>
-
         <div className="col-span-full">
           <p className="text-red-500 text-xs h-6 align-baseline pt-2">{errors.comment?.message}</p>
           <textarea className={`border md:p-4 h-80 p-2 w-full focus:outline-accent placeholder:text-foreground ${errors.comment ? "border-red-500" : ""}`} id="comment" placeholder="Your Comment" {...register("comment")} />

@@ -6,7 +6,7 @@ const TableGrid = ({ selectedTable, setSelectedTable, takenTables }) => {
 
   return (
     <div className="col-(--content-col)">
-      <div className="grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-10 mt-20">
+      <div className="grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-10 mt-20 mb-20">
         <Table number="1" image="table1" selectedTable={selectedTable} setSelectedTable={setSelectedTable} taken={isTaken("1")} />
         <Table number="2" image="table1" selectedTable={selectedTable} setSelectedTable={setSelectedTable} taken={isTaken("2")} />
         <Table number="3" image="table2" selectedTable={selectedTable} setSelectedTable={setSelectedTable} taken={isTaken("3")} />
